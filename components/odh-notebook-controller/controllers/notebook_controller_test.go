@@ -242,6 +242,39 @@ var _ = Describe("The Openshift Notebook controller", func() {
 
 	})
 
+	// New test case for notebook update
+	When("Updating a Notebook", func() {
+		const (
+			Name      = "test-notebook-update"
+			Namespace = "default"
+		)
+
+		notebook := createNotebook(Name, Namespace)
+
+		It("Should update the Notebook specification", func() {
+			ctx := context.Background()
+
+			By("By creating a new Notebook")
+			Expect(cli.Create(ctx, notebook)).Should(Succeed())
+			time.Sleep(interval)
+
+			By("By updating the Notebook's image")
+			key := types.NamespacedName{Name: Name, Namespace: Namespace}
+			Expect(cli.Get(ctx, key, notebook)).Should(Succeed())
+
+			updatedImage := "registry.redhat.io/ubi8/ubi:updated"
+			notebook.Spec.Template.Spec.Containers[0].Image = updatedImage
+			Expect(cli.Update(ctx, notebook)).Should(Succeed())
+			time.Sleep(interval)
+
+			By("By checking that the Notebook's image is updated")
+			Eventually(func() string {
+				Expect(cli.Get(ctx, key, notebook)).Should(Succeed())
+				return notebook.Spec.Template.Spec.Containers[0].Image
+			}, duration, interval).Should(Equal(updatedImage))
+		})
+	})
+
 	When("Creating a Notebook, test Networkpolicies", func() {
 		const (
 			Name      = "test-notebook-np"

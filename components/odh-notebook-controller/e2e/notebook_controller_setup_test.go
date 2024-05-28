@@ -4,10 +4,11 @@ import (
 	"context"
 	"flag"
 	"fmt"
-	netv1 "k8s.io/api/networking/v1"
 	"os"
 	"testing"
 	"time"
+
+	netv1 "k8s.io/api/networking/v1"
 
 	nbv1 "github.com/kubeflow/kubeflow/components/notebook-controller/api/v1"
 	routev1 "github.com/openshift/api/route/v1"
@@ -135,8 +136,9 @@ func TestE2ENotebookController(t *testing.T) {
 	if !t.Run("validate controllers", testNotebookControllerValidation) {
 		return
 	}
-	// Run create and delete tests for all the test notebooks
+	// Run create, update and delete tests for all the test notebooks
 	t.Run("create", creationTestSuite)
+	t.Run("update", updateTestSuite)
 	if !skipDeletion {
 		t.Run("delete", deletionTestSuite)
 	}
