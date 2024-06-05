@@ -53,9 +53,6 @@ WORKDIR /home/rhods
 ## Copy kf-notebook-controller-manager binary from builder stage
 COPY --from=builder /workspace/odh-notebook-controller/bin/manager /manager
 COPY --from=builder /workspace/odh-notebook-controller/third_party/license.txt third_party/license.txt
-# in builder image, `go env GOPATH` outputs `/opt/app-root/src/go`
-COPY --from=builder //opt/app-root/src/go/pkg/mod/github.com/hashicorp third_party/hashicorp
-
 
 ## Switch to a non-root user
 USER rhods
