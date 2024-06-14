@@ -10,7 +10,7 @@ ARG SOURCE_CODE=.
 ARG GOLANG_VERSION=1.21
 
 # Use ubi8/go-toolset as base image
-FROM registry.access.redhat.com/ubi8/go-toolset:${GOLANG_VERSION} as builder
+FROM registry.access.redhat.com/ubi9/go-toolset:${GOLANG_VERSION} as builder
 
 ## Build args to be used at this step
 ARG SOURCE_CODE
@@ -40,7 +40,7 @@ RUN CGO_ENABLED=0 GOOS=linux GO111MODULE=on go build -a -mod=mod \
         -o ./bin/manager main.go
 
 # Use ubi8/ubi-minimal as base image
-FROM registry.access.redhat.com/ubi8/ubi-minimal:latest
+FROM registry.access.redhat.com/ubi9/ubi-minimal:latest
 
 ## Install additional packages
 RUN microdnf install -y shadow-utils &&\
