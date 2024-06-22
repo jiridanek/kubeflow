@@ -74,8 +74,6 @@ require (
 )
 
 // use sibling kubeflow packages from this repo
-replace (
-	github.com/kubeflow/kubeflow/components/common => ../common
-)
+replace github.com/kubeflow/kubeflow/components/common => ../common
 
 replace google.golang.org/grpc => google.golang.org/grpc v1.56.3
