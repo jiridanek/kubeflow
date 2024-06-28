@@ -1,0 +1,27 @@
+name: Run Common unit tests
+on:
+  push:
+  pull_request:
+    paths:
+      - components/common/**
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Install Go
+      uses: actions/setup-go@v5
+      with:
+        check-latest: true
+        go-version-file: components/common/go.mod
+        cache-dependency-path: components/common/go.sum
+
+    # there are no unit tests to run
+    - name: Compile
+      run: |
+        cd components/common
+        go build ./...
