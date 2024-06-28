@@ -60,6 +60,9 @@ jobs:
         env:
           CACHE_IMAGE: ghcr.io/${{ github.repository }}/components/odh-notebook-controller/build-cache
 
+      - name: Scan Notebook Controller image with Trivy
+        run: bash testing/gha_run_trivy_scan.sh "localhost/${{env.IMG}}:${{env.TAG}}"
+
       - name: Install KinD
         run: ./components/testing/gh-actions/install_kind.sh
 
