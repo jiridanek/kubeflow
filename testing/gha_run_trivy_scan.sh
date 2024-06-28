@@ -74,11 +74,13 @@ EOF
 
 echo "[INFO] running Trivy ${TRIVY_VERSION}"
 podman run --rm \
+    -v ${PODMAN_SOCK}:/var/run/docker.sock \
     -v ${REPORT_FOLDER}:/report \
     docker.io/aquasec/trivy:${TRIVY_VERSION} \
       image \
       --scanners vuln,secret \
-      --exit-code 0 --timeout 30m \
+      --exit-code 0 \
+      --timeout 30m \
       --severity CRITICAL,HIGH \
       --format template --template "@/report/$REPORT_TEMPLATE" -o /report/${REPORT_FILE} \
       ${IMAGE_NAME}
