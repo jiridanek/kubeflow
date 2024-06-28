@@ -9,7 +9,7 @@ require (
 	github.com/kubeflow/kubeflow/components/notebook-controller v0.0.0-20240625063012-2898d0f61edf
 	github.com/onsi/ginkgo v1.16.5
 	github.com/onsi/gomega v1.33.1
-	github.com/openshift/api v0.0.0-20210416115537-a60c0dc032fd
+	github.com/openshift/api v0.0.0-20190924102528-32369d4db2ad
 	github.com/pkg/errors v0.9.1
 	github.com/stretchr/testify v1.9.0
 	go.uber.org/zap v1.26.0
