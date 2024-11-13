@@ -149,16 +149,16 @@ func InjectOAuthProxy(notebook *nbv1.Notebook, oauth OAuthConfig) error {
 		},
 		VolumeMounts: []corev1.VolumeMount{
 			{
+				Name:      "oauth-client",
+				MountPath: "/etc/oauth/client",
+			},
+			{
 				Name:      "oauth-config",
 				MountPath: "/etc/oauth/config",
 			},
 			{
 				Name:      "tls-certificates",
 				MountPath: "/etc/tls/private",
-			},
-			{
-				Name:      "oauth-client",
-				MountPath: "/etc/oauth/client",
 			},
 		},
 	}
@@ -214,7 +214,7 @@ func InjectOAuthProxy(notebook *nbv1.Notebook, oauth OAuthConfig) error {
 		Name: "oauth-client",
 		VolumeSource: corev1.VolumeSource{
 			Secret: &corev1.SecretVolumeSource{
-				SecretName:  notebook.Name + "-oauth-client-generated",
+				SecretName:  notebook.Name + "-oauth-client",
 				DefaultMode: pointer.Int32Ptr(420),
 			},
 		},
