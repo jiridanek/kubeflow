@@ -648,7 +648,7 @@ var _ = Describe("The Openshift Notebook controller", func() {
 								Name: "oauth-client",
 								VolumeSource: corev1.VolumeSource{
 									Secret: &corev1.SecretVolumeSource{
-										SecretName:  Name + "-oauth-client-generated",
+										SecretName:  Name + "-oauth-client",
 										DefaultMode: pointer.Int32Ptr(420),
 									},
 								},

@@ -214,7 +214,7 @@ func InjectOAuthProxy(notebook *nbv1.Notebook, oauth OAuthConfig) error {
 		Name: "oauth-client",
 		VolumeSource: corev1.VolumeSource{
 			Secret: &corev1.SecretVolumeSource{
-				SecretName:  notebook.Name + "-oauth-client-generated",
+				SecretName:  notebook.Name + "-oauth-client",
 				DefaultMode: pointer.Int32Ptr(420),
 			},
 		},
