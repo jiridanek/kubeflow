@@ -235,7 +235,7 @@ jobs:
             name: ${notebookName}-oauth-client-generated
             namespace: ${notebookNamespace}
           data:
-            secret: ODlFc0g0ckNsRVRETFZRN0VjaWlSUlBBbkxMY2pUMnU=
+            secret: EXAMPLE_SECRET_xyz
           type: Opaque
           ---
           kind: Secret
@@ -244,7 +244,7 @@ jobs:
             name: ${notebookName}-oauth-config-generated
             namespace: ${notebookNamespace}
           data:
-            cookie_secret: WTB4TlVXZGFPWGRqZDJwd01pdFJaa2wxVlZvM2R6MDk=
+            cookie_secret: EXAMPLE_COOKIE_SECRET_x
           type: Opaque
           EOF
 
