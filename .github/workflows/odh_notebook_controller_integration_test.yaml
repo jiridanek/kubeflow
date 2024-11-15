@@ -234,7 +234,7 @@ jobs:
           metadata:
             name: ${notebookName}-oauth-client-generated
             namespace: ${notebookNamespace}
-          data:
+          stringData:
             secret: EXAMPLE_SECRET_xyz
           type: Opaque
           ---
@@ -243,7 +243,7 @@ jobs:
           metadata:
             name: ${notebookName}-oauth-config-generated
             namespace: ${notebookNamespace}
-          data:
+          stringData:
             cookie_secret: EXAMPLE_COOKIE_SECRET_x
           type: Opaque
           EOF
