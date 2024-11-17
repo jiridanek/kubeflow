@@ -49,7 +49,7 @@ var _ = Describe("The Openshift Notebook controller", func() {
 	// Define utility constants for testing timeouts/durations and intervals.
 	const (
 		duration = 10 * time.Second
-		interval = 2 * time.Second
+		interval = 111 * time.Millisecond
 	)
 
 	When("Creating a Notebook", func() {
