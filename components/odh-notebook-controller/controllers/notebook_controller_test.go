@@ -663,9 +663,7 @@ var _ = Describe("The Openshift Notebook controller", func() {
 			Expect(cli.Create(ctx, notebook)).Should(Succeed())
 
 			By("By checking that the webhook has injected the sidecar container")
-			Eventually(func() bool {
-				return CompareNotebooks(*notebook, expectedNotebook)
-			}, duration, interval).Should(BeTrueBecause(cmp.Diff(*notebook, expectedNotebook)))
+			Expect(CompareNotebooks(*notebook, expectedNotebook)).Should(BeTrueBecause(cmp.Diff(*notebook, expectedNotebook)))
 		})
 
 		It("Should remove the reconciliation lock annotation", func() {
