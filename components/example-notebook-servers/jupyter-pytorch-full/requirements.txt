@@ -4,7 +4,7 @@ kfp-server-api==1.6.0
 kfserving==0.5.1
 
 # common packages
-bokeh==2.3.2
+bokeh==3.8.2
 cloudpickle==1.6.0
 dill==0.3.4
 ipympl==0.7.0
@@ -21,3 +21,5 @@ xgboost==1.4.2
 # pytorch packages
 #torchelastic==0.2.2 this currently causes a dependency conflict, should be fixed very soon
 fastai==2.4
+torch>=2.9.0 # not directly required, pinned by Snyk to avoid a vulnerability
+urllib3>=2.6.3 # not directly required, pinned by Snyk to avoid a vulnerability
